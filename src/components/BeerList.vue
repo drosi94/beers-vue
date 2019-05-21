@@ -72,12 +72,12 @@
         methods: {
             async getData() {
                 const response = await axios.get(`https://api.punkapi.com/v2/beers?page=${this.pagination.page}&per_page=${this.pagination.rowsPerPage}` +
-                    `&malt=Extra_Pale${this.isStrongBeer ? '&abv_gt=18' : ''}`)
+                    `&malt=Extra_Pale${this.isStrongBeer ? '&abv_gt=7' : ''}`)
                 this.beers = response.data;
             },
             async computeTotalPages() {
                 // Get the total items (API doesn't provide the total length on pagination)
-                this.pagination.totalItems = (await axios.get(`https://api.punkapi.com/v2/beers?malt=Extra_Pale${this.isStrongBeer ? '&abv_gt=18' : ''}`)).data.length
+                this.pagination.totalItems = (await axios.get(`https://api.punkapi.com/v2/beers?malt=Extra_Pale${this.isStrongBeer ? '&abv_gt=7' : ''}`)).data.length
                 this.getData();
             }
         },
